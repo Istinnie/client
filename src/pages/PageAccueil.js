@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Repas from "../components/Repas";
 import NavBar from "../components/NavBar";
-// import NavBar from "../components/navbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const PageAccueil = ({ repasListe }) => {
+const PageAccueil = () => {
   window.scrollTo(0, 0);
   // const [repasListe, setrepasListe] = useState([]);
   // const fetchRepas = () => {
@@ -16,21 +15,44 @@ const PageAccueil = ({ repasListe }) => {
   // useEffect(() => {
   //   fetchRepas();
   // }, []);
+  let [query, setQuery] = useState("e");
+  let [data, setData] = useState([]);
+  let [sortMethod, setSortMethod] = useState("top");
+  const fetchData = () => {
+    axios.get("http://localhost:5000/api/repas").then((response) => {
+      console.log(response.data);
+      setData(response.data);
+    });
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <NavBar />
       <div>
-        <section className="games-list">
-          <div className="games-title">
-            <h2>Menu du jour</h2>
-          </div>
-          <div className="games-container">
-            <Repas />
-            <Repas />
-            <Repas />
-            <Repas />
-          </div>
+        <section className="repas-container">
+          {data &&
+            data
+              // .sort((a, b) => {
+              //   if (sortMethod === "top") {
+              //     return b.vote_average - a.vote_average;
+              //   } else {
+              //     return a.vote_average - b.vote_average;
+              //   }
+              // })
+              .map((repas, index) => {
+                return (
+                  <Repas
+                    key={index}
+                    nom={repas.nom}
+                    ingredient={repas.ingredient}
+                    image={repas.image}
+                    id={repas.id}
+                  />
+                );
+              })}
         </section>
       </div>
     </>
