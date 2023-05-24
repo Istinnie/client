@@ -1,0 +1,39 @@
+// // Import de polices d'écritures de Google Fonts
+// @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+// // //Création de varibles de styles
+// :root {
+//     --full-width: 100%;
+//     --full-height: 100vh;
+//     --poppins: 'Poppins',
+//         sans-serif;
+// }
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+    // box-sizing: border-box;
+    position: relative;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@media screen and (max-width: 1120px) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+//Thème clair et sombre pour le projet
+@media (prefers-color-scheme: light) {}
+
+@media (prefers-color-scheme: dark) {}
+
+// //Import de fichiers styles des composants
+// // @import url();
+
+@import "./pages/_PageAccueil";
+@import "./pages/_FicheRepas";
+@import "./pages/_ListeRepas";
+@import "./components/NavBar.scss"
+
