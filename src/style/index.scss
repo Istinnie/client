@@ -16,6 +16,21 @@ body {
     // box-sizing: border-box;
     position: relative;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url("../assets/img/repas-back.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 20%;
+    .img-back-bottom{
+        img{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            z-index:-1;
+            width: 20%;
+            transform: scaleX(-1);
+        }
+       
+}
 }
 
 @media screen and (max-width: 1120px) {

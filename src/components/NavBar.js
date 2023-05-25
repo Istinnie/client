@@ -16,7 +16,7 @@ function NavBar() {
               <Link to={"/repas"}>Profil</Link>
             </li>
             <li>
-              <Link to={"/add"}>Créer un repas</Link>
+              <Link to={"/ficheRepas"}>Créer un repas</Link>
             </li>
           </ul>
         </div>

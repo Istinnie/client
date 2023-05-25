@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import PageAccueil from "./pages/PageAccueil";
 import ListeRepas from "./pages/ListeRepas";
 import FicheRepas from "./pages/FicheRepas";
 import AjoutRepas from "./pages/AjoutRepas";
-
+import axios from "axios";
+import env from "react-dotenv";
 function App() {
+  let [data, setData] = useState([]);
+
+  const fetchData = () => {
+    axios.get("http://localhost:5000/api/repas").then((response) => {
+      console.log(response.data);
+      setData(response.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div>
       {/* put your navbar here */}
 
       <div className="container mt-3">
         <Routes>
-          <Route path="/" element={<PageAccueil />} />
-          <Route path="/repas" element={<ListeRepas />} />
-          <Route path="/ajoutRepas" element={<AjoutRepas />} />
+          <Route path="/" element={<PageAccueil data={data} />} />
+          <Route path="/repas" element={<ListeRepas data={data} />} />
           <Route path="/ficheRepas/:id" element={<FicheRepas />} />
+          <Route path="/ficheRepas" element={<AjoutRepas />} />
         </Routes>
       </div>
     </div>

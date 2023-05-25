@@ -3,20 +3,21 @@ nav{
     flex-direction: row;
     justify-content: start;
     
-    padding: 10px;
+    padding: 5px;
     // vertical-align: middle;
     align-items: center;
     color: #000000;
-    font-size: 20px;
+    font-size: 16px;
     box-shadow: 0px 6px 7px -8px rgba(154, 154, 154, 0.363);
+    z-index: 1;
     div{
         display: flex;
         flex-direction: row;
         align-items: center;
     }
     img{
-        width: 130px;
-        margin-left: -20px;
+        width: 80px;
+        margin-left: -10px;
     }
     ul{
         list-style-type: none;
@@ -48,10 +49,13 @@ nav{
         position: absolute;
         right: 20px;
         span{
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         .deconnect-link{
-            margin-right: -60px;
+            margin-right: -50px;
+            &:hover{
+                font-weight: bold;
+            }
         }
         
     }
