@@ -4,12 +4,17 @@ import NavBar from "../components/NavBar";
 import backImg from "../assets/img/repas-back.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const ListeRepas = ({ data }) => {
+const ListeRepas = () => {
   window.scrollTo(0, 0);
+  let [data, setData] = useState([]);
   let [query, setQuery] = useState("e");
-  let [datas, setData] = useState([]);
+  // let [sortMethod, setSortMethod] = useState("top");
+
   const fetchData = () => {
-    setData(data);
+    axios.get("http://localhost:5000/api/repas").then((response) => {
+      console.log(response.data);
+      setData(response.data);
+    });
   };
 
   useEffect(() => {
@@ -29,6 +34,9 @@ const ListeRepas = ({ data }) => {
     <>
       <NavBar />
       <div>
+        <div className="img-back-top">
+          <img src={backImg} alt="" />
+        </div>
         <div className="preambule-content-profile">
           <div className="content-title-profile">
             <h2>Profil</h2>

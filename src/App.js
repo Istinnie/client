@@ -7,26 +7,14 @@ import AjoutRepas from "./pages/AjoutRepas";
 import axios from "axios";
 import env from "react-dotenv";
 function App() {
-  let [data, setData] = useState([]);
-
-  const fetchData = () => {
-    axios.get("http://localhost:5000/api/repas").then((response) => {
-      console.log(response.data);
-      setData(response.data);
-    });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
   return (
     <div>
       {/* put your navbar here */}
 
       <div className="container mt-3">
         <Routes>
-          <Route path="/" element={<PageAccueil data={data} />} />
-          <Route path="/repas" element={<ListeRepas data={data} />} />
+          <Route path="/" element={<PageAccueil />} />
+          <Route path="/repas" element={<ListeRepas />} />
           <Route path="/ficheRepas/:id" element={<FicheRepas />} />
           <Route path="/ficheRepas" element={<AjoutRepas />} />
         </Routes>

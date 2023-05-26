@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 const Repas = ({ nom, ingredient, image, id }) => {
-  //const Repas = () => {
-
+  const [repas, setRepas] = useState([]);
+  const removeData = (id) => {
+    axios.delete(`http://localhost:5000/api/repas/${id}`).then((res) => {
+      alert("Repas supprimé avec succès");
+      setRepas(res.data);
+      window.location.reload();
+    });
+  };
   return (
     <div className="recipe">
       <h3>{nom}</h3>
@@ -14,15 +21,18 @@ const Repas = ({ nom, ingredient, image, id }) => {
         <div className="info-title">
           <span>Ingrédient : {`${ingredient}`}</span>
         </div>
-        <div className="button-res">
-          <div>
+        <div>
+          <div className="button-edit">
             <Link
               style={{ textDecoration: "none" }}
               to={`/ficheRepas/${id}`}
               className="logo-paiement"
             >
-              <span>Réserver</span>
+              <span>Détail</span>
             </Link>
+          </div>
+          <div className="button-delete" onClick={() => removeData(id)}>
+            <span title="Supprimer ce repas">Supprimer</span>
           </div>
         </div>
       </div>

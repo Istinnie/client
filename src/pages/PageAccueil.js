@@ -4,23 +4,18 @@ import NavBar from "../components/NavBar";
 import backImg from "../assets/img/repas-back.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const PageAccueil = ({ data }) => {
+const PageAccueil = () => {
   window.scrollTo(0, 0);
-  // const [repasListe, setrepasListe] = useState([]);
-  // const fetchRepas = () => {
-  //   axios
-  //     .get("http://localhost:5000/api/repas")
-  //     .then((response) => setrepasListe(response.data));
-  //   // .then((response) => console.log(response.data));
-  // };
-  // useEffect(() => {
-  //   fetchRepas();
-  // }, []);
+
+  let [data, setData] = useState([]);
   let [query, setQuery] = useState("e");
-  let [datas, setData] = useState([]);
   // let [sortMethod, setSortMethod] = useState("top");
+
   const fetchData = () => {
-    setData(data);
+    axios.get("http://localhost:5000/api/repas").then((response) => {
+      console.log(response.data);
+      setData(response.data);
+    });
   };
 
   useEffect(() => {
@@ -48,6 +43,9 @@ const PageAccueil = ({ data }) => {
     <>
       <NavBar />
       <div>
+        <div className="img-back-top">
+          <img src={backImg} alt="" />
+        </div>
         <div className="preambule-content">
           <div className="content-title">
             <h2>Menu du jour</h2>

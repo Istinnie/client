@@ -17,7 +17,12 @@ const AjoutRepas = () => {
     await axios
       .post("http://localhost:5000/api/repas", { nom, ingredient })
       .then((response) => {
-        console.log(response);
+        console.log(response.status);
+        if (response.status === 200) {
+          alert("Repas ajouté avec succès");
+          nom = "";
+          ingredient = "";
+        }
         // Handle response
       });
   };
@@ -28,6 +33,9 @@ const AjoutRepas = () => {
       <div>
         <div>
           <section>
+            <div className="img-back-top">
+              <img src={backImg} alt="" />
+            </div>
             <div className="preambule-content-profile">
               <div>
                 <form method="post" onSubmit={handleSubmit}>
@@ -53,7 +61,7 @@ const AjoutRepas = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td>Ingrédients</td>
+                        <td>Ingrédients </td>
                         <td>
                           <input
                             type="text"

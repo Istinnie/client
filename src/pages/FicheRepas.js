@@ -36,6 +36,9 @@ const FicheRepas = () => {
       <div>
         <div>
           <section>
+            <div className="img-back-top">
+              <img src={backImg} alt="" />
+            </div>
             <div className="preambule-content-profile">
               <div>
                 <form>
@@ -78,15 +81,15 @@ const FicheRepas = () => {
                         </td>
                       </tr>
                     </table>
-                    <div className="button-valid">
+                    {/* <div className="button-valid">
                       <div>
                         <span>Enregistrer</span>
-                        {/* </Link> */}
+                        {/* </Link> 
                       </div>
-                    </div>
+                    </div> */}
                     <div className="button-delete">
                       <div>
-                        <span>Suppprimer</span>
+                        <span>Enregistrer</span>
                         {/* </Link> */}
                       </div>
                     </div>
